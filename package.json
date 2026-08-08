@@ -1,0 +1,83 @@
+{
+  "name": "rafeeq-a11y",
+  "version": "1.0.0-beta.1",
+  "description": "An intelligent, highly customizable accessibility widget for React.",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eyad-Yahia/rafeeq.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Eyad-Yahia/rafeeq/issues"
+  },
+  "homepage": "https://github.com/Eyad-Yahia/rafeeq#readme",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build:js": "tsup",
+    "build:css": "tailwindcss -i ./styles.css -o ./dist/styles.css --minify",
+    "build:fonts": "node -e \"require('fs').cpSync('docs/fonts', 'dist/fonts', {recursive:true, force:true})\"",
+    "build": "npm run build:js && npm run build:fonts && npm run build:css",
+    "watch:js": "tsup --watch",
+    "watch:css": "tailwindcss -i ./styles.css -o ./dist/styles.css --watch",
+    "demo": "npm --prefix demo run dev",
+    "predev": "npm --prefix demo install && npm run build",
+    "dev": "concurrently \"npm run watch:js\" \"npm run watch:css\" \"npm run demo\"",
+    "test": "vitest run"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "./dist/styles.css"
+  ],
+  "keywords": [
+    "accessibility",
+    "widget",
+    "a11y",
+    "react",
+    "component",
+    "voice-commands",
+    "screen-reader"
+  ],
+  "author": "Eyad Yahia",
+  "license": "MIT",
+  "peerDependencies": {
+    "framer-motion": ">=10.0.0",
+    "lucide-react": ">=0.200.0 <2.0.0",
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "overrides": {
+    "esbuild": "^0.28.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "autoprefixer": "^10.4.19",
+    "axe-core": "^4.13.0",
+    "concurrently": "^10.0.4",
+    "jsdom": "^30.0.1",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^4.3.3",
+    "tsup": "^8.1.0",
+    "typescript": "^5.4.5",
+    "vitest": "^4.1.10",
+    "vitest-axe": "^0.1.0"
+  },
+  "allowScripts": {
+    "esbuild@0.27.7": true
+  }
+}
