@@ -1,0 +1,192 @@
+@import "tailwindcss";
+@source "./components";
+@source "./providers";
+@source "./plugins";
+@source "./hooks";
+
+/* Force Tailwind v4 to use class-based dark mode instead of OS media query */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  /* Targeted CSS Reset to protect widget from host page bleeding */
+  #accessibility-widget-root,
+  #accessibility-widget-root * {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: #e5e7eb;
+    font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    line-height: 1.5;
+    text-align: left;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0;
+    text-shadow: none;
+    text-decoration: none;
+  }
+  
+  #accessibility-widget-root {
+    font-size: 16px;
+    font-weight: 400;
+    color: #0f172a; /* Slate 900 as base text color */
+  }
+  
+  #accessibility-widget-root button,
+  #accessibility-widget-root input,
+  #accessibility-widget-root select,
+  #accessibility-widget-root textarea {
+    font-family: inherit;
+    font-size: 100%;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+  }
+
+  /* Premium Scrollbar */
+  #accessibility-widget-root ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  #accessibility-widget-root ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  #accessibility-widget-root ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+  }
+  #accessibility-widget-root ::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }
+  .dark #accessibility-widget-root ::-webkit-scrollbar-thumb {
+    background: #334155;
+  }
+  .dark #accessibility-widget-root ::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+  }
+}
+
+/* Accessibility Widget Styles */
+
+.acc-invert {
+  filter: invert(100%) !important;
+}
+
+.acc-light-mode {
+  background-color: #f8fafc !important;
+  color: #334155 !important;
+  filter: contrast(0.85) saturate(0.7) !important;
+}
+
+.acc-light-mode *:not(img):not(video):not(svg):not(path) {
+  background-color: #f8fafc !important;
+  color: #334155 !important;
+  border-color: #cbd5e1 !important;
+}
+
+.acc-yellow-black {
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+}
+
+.acc-yellow-black *:not(img):not(video):not(svg):not(path) {
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+  border-color: #ffff00 !important;
+}
+
+.acc-yellow-black img,
+.acc-yellow-black video {
+  filter: brightness(0.85) contrast(1.25) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.acc-yellow-black svg,
+.acc-yellow-black svg * {
+  color: #ffff00 !important;
+  stroke: #ffff00 !important;
+}
+
+.acc-grayscale {
+  filter: grayscale(100%) !important;
+}
+
+.acc-dyslexia * {
+  font-family: 'OpenDyslexic', Arial, sans-serif !important;
+}
+
+.acc-legible * {
+  font-family: 'Segoe UI', sans-serif !important;
+}
+
+.acc-highlight-links a {
+  outline: 2px solid #047857 !important;
+  background-color: rgba(4, 120, 87, 0.1) !important;
+}
+
+.acc-highlight-headers h1,
+.acc-highlight-headers h2,
+.acc-highlight-headers h3 {
+  background-color: #047857 !important;
+  color: #fff !important;
+}
+
+.acc-focus-ring *:focus {
+  outline: 4px solid #d97706 !important;
+}
+
+.acc-hide-images img,
+.acc-hide-images video {
+  visibility: hidden !important;
+}
+
+.acc-pause-animations * {
+  animation: none !important;
+  transition: none !important;
+}
+
+.acc-magnified-element {
+  transform: scale(1.1) !important;
+  transition: transform 0.2s !important;
+  background-color: rgba(4, 120, 87, 0.1) !important;
+  z-index: 50 !important;
+  position: relative !important;
+}
+
+.acc-line-height-1 * {
+  line-height: 1.5 !important;
+}
+
+.acc-line-height-2 * {
+  line-height: 2 !important;
+}
+
+.acc-letter-spacing-1 * {
+  letter-spacing: 0.12em !important;
+}
+
+.acc-letter-spacing-2 * {
+  letter-spacing: 0.24em !important;
+}
+
+.acc-letter-spacing-3 * {
+  letter-spacing: 0.36em !important;
+}
+
+.acc-word-spacing-1 * {
+  word-spacing: 0.16em !important;
+}
+
+.acc-word-spacing-2 * {
+  word-spacing: 0.32em !important;
+}
+
+.acc-word-spacing-3 * {
+  word-spacing: 0.48em !important;
+}
+
+@font-face { font-family: 'OpenDyslexic'; font-style: normal; font-weight: 400; src: url('./fonts/OpenDyslexic.woff') format('woff'); }
